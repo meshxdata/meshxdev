@@ -1,26 +1,139 @@
 ---
-import Stats from "../components/Stats.astro";
-import HeroSection from "../components/HeroSection.astro";
-import Layout from "../layouts/Layout.astro";
-import Testimonials from "../components/Testimonials.astro";
-import CallToAction from "../components/CallToAction.astro";
-import BentoGrid from "@components/BentoGrid.astro";
-import SpeedSection from "@components/SpeedSection.astro";
-import AboutSection from "@components/AboutSection.astro";
+import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Base.astro";
 ---
 
-<Layout title="Welcome to Astrolus.">
+<style>
+  .getstarted-rectangle {
+    background: url("getstarted.svg");
+    background-blend-mode: screen, normal;
+    background-size: cover;
+    background-position: center;
+  }
+</style>
 
-    <main class="space-y-16 sm:space-y-28 lg:space-y-32 pb-40 overflow-clip">
-        <HeroSection />
-
-
-      <BentoGrid />
-      <!-- <AboutSection /> -->
-      <!-- <BentoGrid /> -->
-      <!-- <SpeedSection /> -->
-      <!-- <Stats/> -->
-      <!-- <Testimonials/> -->
-      <CallToAction />
-    </main>
+<Layout title="meshX">
+  <main class="bg-[#242526] font-montserrat">
+    <div class="max-w-7xl mx-auto dark:text-white md:py-28 md:flex md:items-center">
+      <div class="p-6 md:ml-12 mt-4 md:w-1/2 md:flex justify-start md:justify-start flex">
+        <img
+          src="/svgviewer-png-output.png"
+          alt="Logo"
+          class="flex w-48 h-8 md:w-40 md:h-7 justify-items-center md:justify-start"
+        />
+      </div>
+      <div class="w-full max-w-4xl p-6 md:p-0 mx-auto md:mx-0">
+        <h1 class="text-[#FF6000] text-[44px] font-normal my-4 text-start md:text-left">
+          Build a powerful AI future <br /> on your data
+        </h1>
+        <p class="text-[23px] font-thin my-4 text-left md:text-left">
+          Our AI-first data platform will transform your enterprise data into
+          the foundation for specialized, high-performing AI models
+        </p>
+        <p class="text-[16px] font-thin text-left md:text-left">
+          meshX simplifies the complex AI journey. From data preparation to
+          model selection, training, deployment, and monitoring, our platform
+          provides a streamlined experience for enterprise AI success.
+        </p>
+      </div>
+    </div>    
+    <div class="bg-[#242526]">
+      <div class="max-w-7xl mx-auto md:py-16 p-8">
+        <div
+          class="md:flex md:justify-left space-y-8 md:space-y-0 md:gap-x-8 dark:text-white"
+        >
+          <div>
+            <div class="bg-[#242526] p-8 min-w-[380px]">
+              <img src="/1.svg" class="pb-2" />
+              <h2
+                class="text-2xl text-[#FF6000] font-normal font-montserrat text-left"
+              >
+                AI starts with Data
+              </h2>
+              <p
+                class="text-[#FFFFFF]/70 text-left my-4 min-h-[120px] max-h-[120px]"
+              >
+                Break down data silos and transform raw data into AI-ready
+                assets. Consolidate your information for maximum model
+                performance.
+              </p>
+              <img src="/Rectangle_b.svg" class="pt-2" />
+            </div>
+          </div>
+          <div>
+            <div class="bg-[#242526] p-8 min-w-[400px]">
+              <img src="/2.svg" class="pb-2" />
+              <h2
+                class="text-2xl text-[#FF6000] font-normal font-montserrat text-left"
+              >
+                Securely build your assets
+              </h2>
+              <p
+                class="text-[#FFFFFF]/70 text-left my-4 min-h-[120px] max-h-[120px]"
+              >
+                Train powerful foundation models with your enterprise data.
+                Maintain security and governance throughout your AI development
+                process.
+              </p>
+              <img src="/Rectangle_b.svg" class="pt-2" />
+            </div>
+          </div>
+          <div>
+            <div class="bg-[#242526] p-8 min-w-[400px]">
+              <img src="/3.svg" class="pb-2" />
+              <h2
+                class="text-2xl text-[#FF6000] font-normal font-montserrat text-left"
+              >
+                Operational AI Success
+              </h2>
+              <p
+                class="text-[#FFFFFF]/70 text-left my-4 min-h-[120px] max-h-[120px]"
+              >
+                Achieve real-world impact from your models. Deploy your
+                customized AI solutions at scale. Monitor performance in
+                real-time, and ensure responsible AI usage across your
+                organization.
+              </p>
+              <img src="/Rectangle_b.svg" class="pt-2" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto dark:text-white md:py-6 md:flex md:flex-wrap">
+      <div class="p-8 md:w-4/12">
+        <p class="text-lg my-8 md:ml-20 md:mt-20 justify-center md:justify-start flex">
+          <img src="/neos.svg" class="pt-2" />
+        </p>
+      </div>
+      <div class="p-8 md:w-8/12">
+        <h2 class="text-3xl text-[#FFFFFF]/70 font-normal my-4">
+          We built the world's first cognitive city data mesh. What can we build
+          with you?
+        </h2>
+        <p class="text-lg my-4 text-[#FFFFFF]/70 font-thin">
+          We are evolving our first success with data mesh to a new extent. We
+          want to build a fully governed AI-first data platform so the data
+          never leaves the enterprise’s premises but is organized, shred, and
+          used for training in the most secure and managed way possible. This
+          will reduce the enterprises’ reliance on third parties, unpredictable
+          AI models, talent and other risks and costs.
+        </p>
+      </div>
+      <div class="bg-[#242526] w-full h-[337px] bg-cover flex items-center justify-center p-2">
+      <div class="bg-[url('/getstarted.svg')] w-full h-[337px] bg-cover flex items-center justify-center">
+        <div class="bg-opacity-90 p-6 rounded-md max-w-2xl w-full mx-4 text-center mt-36">
+          <h2 class="text-white text-2xl font-normal font-montserrat mb-4">Request early access</h2>
+          <form class="flex flex-col sm:flex-row items-center w-full space-y-2 sm:space-y-0">
+            <div class="flex w-full">
+              <input type="email" placeholder="email address" class="flex-grow placeholder-white/70 font-montserrat bg-[#BB3800] rounded-l-md focus:outline-none focus:ring-2 text-white p-4">
+              <button type="submit" class="p-4 bg-[#BB3800] text-white rounded-r-md font-semibold border border-[#FF4D00] hover:text-[#FF6000] hover:bg-white/70">Request</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+    <Footer />
+  </main>
 </Layout>
