@@ -3,7 +3,6 @@ import Navigation from '../components/Navigation.astro';
 import {
   SITE_TITLE,
   SITE_DESCRIPTION,
-  SITE_DEFAULT_OG_IMAGE,
 } from '../site_config';
 
 export interface Props {
@@ -25,10 +24,6 @@ export interface Props {
 const {
   title = SITE_TITLE,
   description = SITE_DESCRIPTION,
-  thumbnail = {
-    src: SITE_DEFAULT_OG_IMAGE,
-    alt: SITE_TITLE
-  },
   canonical,
 } = Astro.props;
 ---
@@ -38,7 +33,7 @@ const {
 	<head>
     <meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto&display=swap" rel="stylesheet">
 		<title>{title}</title>
     <meta name="description" content={description}>
@@ -48,7 +43,6 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:type" content="website" />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={thumbnail.src} />
     <meta property="og:url" content={Astro.request.url} />
     <meta name="twitter:card" content="summary_large_image" />
 	</head>
