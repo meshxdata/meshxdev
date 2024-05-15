@@ -1,18 +1,23 @@
 import { defineConfig } from 'astro/config';
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
+import react from '@astrojs/react';
 import { SITE_URL } from './src/site_config';
 
 // https://astro.build/config
 export default defineConfig({
+  output: 'server',
   site: SITE_URL,
-  integrations: [tailwind(), sitemap()],
+  integrations: [tailwind(), sitemap(), react({
+    include: ['**/react/*'],
+  })],
   vite: {
     plugins: [rawFonts(['.ttf'])],
-    optimizeDeps: { exclude: ['@resvg/resvg-js'] }
-  },
+    optimizeDeps: {
+      exclude: ['@resvg/resvg-js']
+    }
+  }
 });
-
 function rawFonts(ext) {
   return {
     name: 'vite-plugin-raw-fonts',

@@ -1,5 +1,6 @@
 ---
 import Footer from "../components/Footer.astro";
+import GetStartedForm from "../components/react/GetStartedForm";
 import Layout from "../layouts/Base.astro";
 ---
 
@@ -14,8 +15,12 @@ import Layout from "../layouts/Base.astro";
 
 <Layout title="meshX">
   <main class="bg-[#242526] font-montserrat">
-    <div class="max-w-7xl mx-auto dark:text-white md:py-28 md:flex md:items-center">
-      <div class="md:-mt-44 p-6 md:ml-12 md:w-1/2 md:flex justify-start md:justify-start flex">
+    <div
+      class="max-w-7xl mx-auto dark:text-white md:py-28 md:flex md:items-center"
+    >
+      <div
+        class="md:-mt-44 p-6 md:ml-12 md:w-1/2 md:flex justify-start md:justify-start flex"
+      >
         <img
           src="/svgviewer-png-output.png"
           alt="Logo"
@@ -23,20 +28,26 @@ import Layout from "../layouts/Base.astro";
         />
       </div>
       <div class="w-full max-w-4xl p-6 md:p-0 mx-auto md:mx-0">
-        <h1 class="text-[#FF6000] text-[44px] font-normal my-4 text-start md:text-left">
+        <h1
+          class="text-[#FF6000] text-[44px] font-normal my-4 text-start md:text-left"
+        >
           Build a powerful AI future <br /> on your data
         </h1>
-        <p class="text-[23px] font-[200] my-4 text-left md:text-left font-inter text-[#FFFFFF]/70">
+        <p
+          class="text-[23px] font-[200] my-4 text-left md:text-left font-inter text-[#FFFFFF]/70"
+        >
           Our AI-first data platform will transform your enterprise data into
           the foundation for specialized, high-performing AI models
         </p>
-        <p class="text-[16px] font-[200] text-left md:text-left font-inter text-[#FFFFFF]/70">
+        <p
+          class="text-[16px] font-[200] text-left md:text-left font-inter text-[#FFFFFF]/70"
+        >
           meshX simplifies the complex AI journey. From data preparation to
           model selection, training, deployment, and monitoring, our platform
           provides a streamlined experience for enterprise AI success.
         </p>
       </div>
-    </div>    
+    </div>
     <div class="bg-[#242526]">
       <div class="max-w-7xl mx-auto md:py-16 p-4">
         <div
@@ -102,7 +113,9 @@ import Layout from "../layouts/Base.astro";
     </div>
     <div class="max-w-7xl mx-auto dark:text-white md:py-6 md:flex md:flex-wrap">
       <div class="p-8 md:w-4/12">
-        <p class="text-lg my-8 md:ml-20 md:mt-20 justify-center md:justify-start flex">
+        <p
+          class="text-lg my-8 md:ml-20 md:mt-20 justify-center md:justify-start flex"
+        >
           <img src="/neos.png" class="pt-0" />
         </p>
       </div>
@@ -120,19 +133,15 @@ import Layout from "../layouts/Base.astro";
           AI models, talent and other risks and costs.
         </p>
       </div>
-      <div class="bg-[#242526] w-full h-[337px] bg-cover flex items-center justify-center p-2">
-      <div class="bg-[url('/getstarted.svg')] w-full h-[337px] bg-cover flex items-center justify-center">
-        <div class="bg-opacity-90 p-6 rounded-md max-w-2xl w-full mx-4 text-center mt-36">
-          <h2 class="text-white text-2xl font-normal font-montserrat mb-4">Request early access</h2>
-          <form class="flex flex-col sm:flex-row items-center w-full space-y-2 sm:space-y-0">
-            <div class="flex w-full">
-              <input type="email" placeholder="email address" class="flex-grow placeholder-white/70 font-montserrat bg-[#BB3800] rounded-l-md focus:outline-none focus:ring-2 text-white p-4">
-              <button type="submit" class="p-4 bg-[#BB3800] text-white rounded-r-md font-semibold border border-[#FF4D00] hover:text-[#FF6000] hover:bg-white/70">Request</button>
-            </div>
-          </form>
+      <div
+        class="bg-[#242526] w-full h-[337px] bg-cover flex items-center justify-center p-2"
+      >
+        <div
+          class="bg-[url('/getstarted.svg')] w-full h-[337px] bg-cover flex items-center justify-center"
+        >
+        <GetStartedForm client:load/>
         </div>
       </div>
-    </div>
     </div>
     <Footer />
   </main>
