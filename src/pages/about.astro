@@ -2,8 +2,8 @@
 import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.astro";
 import Layout from "../layouts/Base.astro";
-import * as about from "../content/aboutus.md";
-import{Content as DataContent} from "../content/aboutus.md";
+import * as about from "../content/about-us.md";
+import { Content as DataContent } from "../content/about-us.md";
 ---
 
 <style>
@@ -29,10 +29,14 @@ import{Content as DataContent} from "../content/aboutus.md";
     <div
       class="max-w-7xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 p-4 text-gray-200"
     >
-      <h1>
-        {about.frontmatter.title}
-      </h1>
-        <DataContent />
+      <a href="/">
+        <img
+          src="/go-back.png"
+          alt="home"
+          class="h-12 w-12 justify-items-center md:justify-start"
+        />
+      </a>
+      <DataContent />
     </div>
     <Footer />
   </main>
