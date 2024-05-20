@@ -1,3 +1,8 @@
+---
+title: 'Careers at MeshX'
+description:
+---
+
 # Careers at MeshX
 
 Welcome to MeshX's Careers Page! Join us in revolutionizing the future of data architecture. At MeshX, we are at the forefront of innovation, harnessing the power of data mesh technology to transform how organizations manage and utilize data. If you are passionate about data and technology, and thrive in a collaborative, dynamic environment, we'd love to hear from you.
