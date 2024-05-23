@@ -36,9 +36,9 @@ const {
       rel="stylesheet"
     />
     <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;700;900&display=swap"
-    rel="stylesheet"
-  />
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
@@ -49,6 +49,18 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={Astro.request.url} />
     <meta name="twitter:card" content="summary_large_image" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-93RHYT4C93"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-93RHYT4C93");
+    </script>
   </head>
 
   <body class="bg-[#242526] scroll-smooth">
