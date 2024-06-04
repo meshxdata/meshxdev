@@ -1,0 +1,130 @@
+---
+---
+
+<style>
+    :root {
+        --white: rgba(255, 255, 255, 0.68);
+        --orange: #ff6000;
+        --complimentary: #7abeb6;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .section-title {
+        color: var(--white);
+        letter-spacing: 0.36px;
+        font: 400 36px/133% Montserrat, sans-serif;
+        width: 100%;
+    }
+
+    @media (max-width: 991px) {
+        .section-title {
+            max-width: 100%;
+        }
+    }
+
+    .content {
+        margin-top: 32px;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    @media (max-width: 991px) {
+        .content {
+            max-width: 100%;
+        }
+    }
+
+    .cards {
+        gap: 22px;
+        display: flex;
+    }
+
+    @media (max-width: 991px) {
+        .cards {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0px;
+        }
+    }
+
+    .card {
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        line-height: normal;
+        width: 25%;
+        margin-left: 0px;
+        background-color: rgba(255, 255, 255, 0.04);
+        padding: 20px 24px;
+    }
+
+    @media (max-width: 991px) {
+        .card {
+            width: 100%;
+            margin-top: 16px;
+            padding: 20 20px;
+        }
+    }
+
+    .card-title {
+        color: var(--orange);
+        letter-spacing: 0.18px;
+        font: 18px/27px Inter, sans-serif;
+    }
+
+    .card-arrow {
+        color: var(--complimentary);
+        letter-spacing: 0.23px;
+       /* -top: 80px; */
+        margin-top: 107px;
+        font: 23px/150% Inter, sans-serif;
+    }
+
+    .card-arrow-2 {
+        color: var(--complimentary);
+        letter-spacing: 0.23px;
+       /* -top: 80px; */
+        margin-top: 80px;
+        font: 23px/150% Inter, sans-serif;
+    }
+
+    @media (max-width: 991px) {
+        .card-arrow {
+            margin-top: 40px;
+        }
+    }
+</style>
+
+<main class="container">
+    <h2 class="section-title ml-4">How to use NEOS Core</h2>
+    <section class="content -ml-1">
+        <div class="cards">
+            <article class="card">
+                <h3 class="card-title">Getting started with NEOS</h3>
+                <span class="card-arrow" tabindex="0" role="button" style="cursor: pointer;">→</span>
+            </article>
+            <article class="card">
+                <h3 class="card-title">Plan your Data Landscape</h3>
+                <span class="card-arrow" tabindex="0" role="button" style="cursor: pointer;">→</span>
+            </article>
+            <article class="card">
+                <h3 class="card-title">Visualize your data: PowerBI</h3>
+                <span class="card-arrow-2" tabindex="0" role="button" style="cursor: pointer;">→</span>
+            </article>
+            <article class="card">
+                <h3 class="card-title">Visualize your data: Superset</h3>
+                <span class="card-arrow-2" tabindex="0" role="button" style="cursor: pointer;">→</span>
+            </article>
+        </div>
+    </section>
+</main>
