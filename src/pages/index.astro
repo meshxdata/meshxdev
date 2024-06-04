@@ -6,21 +6,48 @@ import Layout from "../layouts/Base.astro";
 ---
 
 <style>
-  .getstarted-rectangle {
+
+.getstarted-rectangle {
     background: url("/public/getstarted.svg");
     background-blend-mode: screen, normal;
     background-size: cover;
     background-position: center;
   }
+
+
+.banner{
+  /* Frame 17 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 60px 40px;
+gap: 32px;
+
+position: relative;
+width: 1205px;
+height: 237px;
+
+background: url(Frame 427319357.png), rgba(255, 255, 255, 0.04);
+border-radius: 4px;
+
+}  
 </style>
 
 <Layout title="meshX">
   <Navigation />
-  <main class="bg-[#242526] font-montserrat">
-    <div class="max-w-7xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4 p-4">
+  <main class="font-montserrat relative">
+    <div
+      class="max-w-7xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4 p-4"
+    >
       <div class="p-4 lg:col-span-2 md:col-span-2">
-        <div class="flex justify-start md:justify-start">
-          <img src="/svgviewer-png-output.png" alt="Logo" class="w-48 h-8 md:w-40 md:h-7" />
+        <div class="flex justify-start md:justify-start pt-4">
+          <img
+            src="/svgviewer-png-output.png"
+            alt="Logo"
+            class="w-48 h-8 md:w-40 md:h-7"
+          />
         </div>
       </div>
       <div class="p-4 lg:col-span-4 md:col-span-4">
@@ -29,73 +56,107 @@ import Layout from "../layouts/Base.astro";
             Build a powerful AI future <br /> on your data
           </h1>
           <p class="text-[23px] font-[200] my-4 text-[#FFFFFF]/70">
-            Our AI-first data platform will transform your enterprise data into the foundation for specialized, high-performing AI models.
+            Our AI-first data platform will transform your enterprise data into
+            the foundation for specialized, high-performing AI models.
           </p>
           <p class="text-[16px] font-[200] text-[#FFFFFF]/70">
-            meshX simplifies the complex AI journey. From data preparation to model selection, training, deployment, and monitoring, our platform provides a streamlined experience for enterprise AI success.
+            meshX simplifies the complex AI journey. From data preparation to
+            model selection, training, deployment, and monitoring, our platform
+            provides a streamlined experience for enterprise AI success.
           </p>
         </div>
       </div>
       <div class="p-4 lg:col-span-2 md:col-span-2 mt-8 md:mt-16">
-        <div class="bg-[#242526] text-start md:text-left">
+        <div class="text-start md:text-left">
           <img src="/1.svg" class="pb-2 md:mx-0" />
-          <h2 class="text-2xl text-[#FF6000] font-normal font-montserrat">
+          <h2
+            class="text-2xl text-[#FF6000] font-normal font-montserrat sm:h-[60px] md:h-[50px] lg:h-[20px]"
+          >
             AI starts with Data
           </h2>
-          <p class="text-[#FFFFFF]/70 my-4 font-inter font-light min-h-[120px] max-h-[120px]">
-            Break down data silos and transform raw data into AI-ready assets. Consolidate your information for maximum model performance.
+          <p
+            class="text-[#FFFFFF]/70 my-4 font-inter font-extralight h-[160px] md:h-[140px] lg:h-[100px]"
+          >
+            Break down data silos and transform raw data into AI-ready assets.
+            Consolidate your information for maximum model performance.
           </p>
           <img src="/Rectangle_b.svg" class="pt-2 md:mx-0" />
         </div>
       </div>
       <div class="p-4 lg:col-span-2 md:col-span-2 mt-8 md:mt-16">
-        <div class="bg-[#242526] text-left md:text-left">
+        <div class="text-left md:text-left">
           <img src="/2.svg" class="pb-2 md:mx-0" />
-          <h2 class="text-2xl text-[#FF6000] font-normal font-montserrat">
+          <h2
+            class="text-2xl text-[#FF6000] font-normal font-montserrat sm:h-[60px] md:h-[50px] lg:h-[20px]"
+          >
             Securely build your assets
           </h2>
-          <p class="text-[#FFFFFF]/70 my-4 font-inter font-light min-h-[120px] max-h-[120px]">
-            Train powerful foundation models with your enterprise data. Maintain security and governance throughout your AI development process.
+          <p
+            class="text-[#FFFFFF]/70 my-4 font-inter font-extralight h-[160px] md:h-[140px] lg:h-[100px]"
+          >
+            Train powerful foundation models with your enterprise data. Maintain
+            security and governance throughout your AI development process.
           </p>
           <img src="/Rectangle_b.svg" class="pt-2 md:mx-0" />
         </div>
       </div>
       <div class="p-4 lg:col-span-2 md:col-span-2 mt-8 md:mt-16">
-        <div class="bg-[#242526] text-start md:text-left">
+        <div class="text-start md:text-left">
           <img src="/3.svg" class="pb-2 md:mx-0" />
-          <h2 class="text-2xl text-[#FF6000] font-normal font-montserrat">
+          <h2
+            class="text-2xl text-[#FF6000] font-normal font-montserrat sm:h-[60px] md:h-[50px] lg:h-[20px]"
+          >
             Operational AI Success
           </h2>
-          <p class="text-[#FFFFFF]/70 my-4 font-inter font-light min-h-[120px] max-h-[120px]">
-            Achieve real-world impact from your models. Deploy your customized AI solutions at scale. Monitor performance in real-time, and ensure responsible AI usage across your organization.
+          <p
+            class="text-[#FFFFFF]/70 my-4 font-inter font-extralight md:h-[140px] h-[160px] lg:h-[100px]"
+          >
+            Achieve real-world impact from your models. Deploy your customized
+            AI solutions at scale. Monitor performance in real-time, and ensure
+            responsible AI usage across your organization.
           </p>
           <img src="/Rectangle_b.svg" class="pt-2 md:mx-0" />
         </div>
       </div>
       <div class="p-4 lg:col-span-2 md:col-span-2 mt-8 md:mt-16">
         <div class="text-center md:text-left">
-          <p class="my-8 md:mt-20 flex justify-start md:justify-start">
-            <img src="/neos.png" />
+          <p class="my-6 flex justify-start md:justify-start">
+            <img src="/neos.png" class="w-[238px] h-[60px]" />
           </p>
         </div>
       </div>
       <div class="p-4 lg:col-span-4 md:col-span-4 mt-8 md:mt-16">
-        <h2 class="text-3xl text-[#FFFFFF]/70 my-2 font-inter font-[200] text-start md:text-left">
-          We built the world's first cognitive city data mesh. What can we build with you?
+        <h2
+          class="text-[24px] text-[#FFFFFF]/70 my-6 font-inter font-extralight text-start md:text-left"
+        >
+          We built the world's first cognitive city data mesh. What can we build
+          with you?
         </h2>
-        <p class="text-lg my-2 text-[#FFFFFF]/70 font-inter font-[200] text-start md:text-left">
-          We are evolving our first success with data mesh to a new extent. We want to build a fully governed AI-first data platform so the data never leaves the enterprise’s premises but is organized, shred, and used for training in the most secure and managed way possible. This will reduce the enterprises’ reliance on third parties, unpredictable AI models, talent and other risks and costs.
+        <p
+          class="my-2 text-[#FFFFFF]/70 font-inter font-extralight text-start md:text-left"
+        >
+          We are evolving our first success with data mesh to a new extent. We
+          want to build a fully governed AI-first data platform so the data
+          never leaves the enterprise’s premises but is organized, shred, and
+          used for training in the most secure and managed way possible. This
+          will reduce the enterprises’ reliance on third parties, unpredictable
+          AI models, talent and other risks and costs.
         </p>
+        <span class="my-2 text-[#7abeb6] text-[16px] font-inter font-light text-start md:text-left cursor-pointer">Learn more &rarr;</span>
       </div>
       <div class="col-span-1 sm:col-span-6 lg:col-span-6 md:col-span-6">
-        <div class="bg-[#242526] w-full h-[337px] bg-cover flex items-center justify-center p-2">
-          <div class="bg-[url('/getstarted.svg')] w-full h-[337px] bg-cover flex items-center justify-center">
+        <div
+          class="w-full h-[337px] bg-cover flex items-center justify-center p-2"
+        >
+          <div
+            class="bg-[url('/getstartednew.svg')] w-full h-[337px] bg-cover flex items-center justify-center rounded"
+          >
             <GetStartedForm client:load />
           </div>
         </div>
       </div>
     </div>
+    <div id="particleCanvas"></div>
     <Footer />
   </main>
-  
 </Layout>

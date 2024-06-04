@@ -25,6 +25,85 @@ const {
 } = Astro.props;
 ---
 
+<style>
+  .getstarted-rectangle {
+    background: url("/public/getstarted.svg");
+    background-blend-mode: screen, normal;
+    background-size: cover;
+    background-position: center;
+  }
+
+  #particleCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+</style>
+<!-- Include p5.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+<!-- Particle System Script -->
+<script type="module">
+
+  const gridSize = 16;
+  const spacing = 64;
+  let particles = [];
+  let angle = 0;
+
+  function setup() {
+    let canvas = createCanvas(windowWidth, windowHeight, WEBGL);
+    canvas.parent('particleCanvas');  // Attach the canvas to the particleCanvas div
+    background('#1B1C1D');
+
+    for (let x = 0; x < gridSize; x++) {
+      particles[x] = [];
+      for (let y = 0; y < gridSize; y++) {
+        particles[x][y] = [];
+        for (let z = 0; z < gridSize; z++) {
+          particles[x][y][z] = createVector(
+            (x - gridSize / 2) * spacing,
+            (y - gridSize / 2) * spacing,
+            (z - gridSize / 2) * spacing
+          );
+        }
+      }
+    }
+  }
+
+  function draw() {
+    background('#1B1C1D');
+    lights();
+    translate(0, 0, -200);
+    rotateY(angle);
+    rotateX(-0.5);
+    angle += 0.0005;
+
+    noStroke();
+    fill(255);
+
+    for (let x = 0; x < gridSize; x++) {
+      for (let y = 0; y < gridSize; y++) {
+        for (let z = 0; z < gridSize; z++) {
+          let p = particles[x][y][z];
+          push();
+          translate(p.x, p.y, p.z);
+          box(0.5);
+          pop();
+        }
+      }
+    }
+  }
+
+  function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+  }
+
+  window.setup = setup;
+  window.draw = draw;
+  window.windowResized = windowResized;
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -63,7 +142,8 @@ const {
     </script>
   </head>
 
-  <body class="bg-[#242526] scroll-smooth">
+  <body class="bg-[#1B1C1D] scroll-smooth">
+    <div id="particleCanvas"></div>
     <slot />
   </body>
 </html>
