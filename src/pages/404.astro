@@ -1,12 +1,116 @@
 ---
-import Base from '../layouts/Base.astro';
+import Footer from "../components/Footer.astro";
+import GettingStartedNeos from "../components/GettingStartedNeos.astro";
+import Navigation from "../components/Navigation.astro";
+import Layout from "../layouts/Content.astro";
 ---
 
-<Base title="404 Page Not Found">
-  <main class="mt-8 mx-auto prose prose-zinc dark:prose-invert">
-    <h1 class="text-center">404 Page Not Found</h1>
-    <a href="/" class="no-underline">
-      <p class="text-center hover:text-green-500">Back To Home</p>
-    </a>
+<style>
+  .container {
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.04);
+    display: flex;
+    font-weight: 400;
+    text-align: center;
+    padding: 80px 60px;
+  }
+
+  @media (max-width: 991px) {
+    .container {
+      padding: 0 20px;
+    }
+  }
+
+  .error-message {
+    display: flex;
+    margin-top: 33px;
+    width: 427px;
+    max-width: 100%;
+    flex-direction: column;
+  }
+
+  .error-text {
+    justify-content: center;
+    color: var(--body, rgba(255, 255, 255, 0.68));
+    letter-spacing: 0.28px;
+    font: 28px/133% 'Chivo Mono', sans-serif;
+  }
+
+  @media (max-width: 991px) {
+    .error-text {
+      max-width: 100%;
+    }
+  }
+
+  .navigation {
+    justify-content: center;
+    align-self: center;
+    display: flex;
+    margin-top: 16px;
+    gap: 10px;
+    font-size: 16px;
+    color: var(--complimentary, #7abeb6);
+    letter-spacing: 0.16px;
+    line-height: 160%;
+    padding: 8px 16px;
+  }
+
+  .nav-icon {
+ aspect-ratio: 1;
+    object-fit: auto;
+    object-position: center;
+    width: 16px;
+    margin: auto 0;
+  }
+
+  .main-page-link {
+    font-family: 'Inter', sans-serif;
+  }
+</style>
+
+
+<Layout title="meshX">
+  <Navigation />
+  <main class="font-montserrat relative">
+    <div
+      class="max-w-7xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4 p-4"
+    >
+      <div class="p-4 lg:col-span-6 md:col-span-6">
+        <div
+          class="grid grid-cols-6 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-8"
+        >
+          <div class="pt-4 lg:col-span-2 md:col-span-2 col-span-3">
+            <div class="flex justify-items justify-start md:justify-start">
+              <a href="/">
+              <img
+                src="/meshx_logo.svg"
+                alt="Logo"
+                class="w-48 h-8 md:w-40 md:h-7"
+              />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 lg:col-span-6 md:col-span-6">
+        <section class="container">
+          <div class="error-message">
+            <p class="error-text">error 404: page not found</p>
+            <div class="navigation" tabindex="0" role="link" style="cursor: pointer;">
+              <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/60ea72903bece72e2d7a0120973a35a051d55def050c63d5f22e6ea20b8c6ee2?apiKey=ccbd9f716d3746849ccb6bd0200e2166&" alt="Back to main page icon" class="nav-icon" />
+              <a class="main-page-link" href="/">Main page</a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+      <div
+        class="col-span-1 sm:col-span-6 lg:col-span-6 md:col-span-6 lg:mt-20"
+      >
+      </div>
+    </div>
+    <div id="particleCanvas"></div>
+    <Footer />
   </main>
-</Base>
+</Layout>
