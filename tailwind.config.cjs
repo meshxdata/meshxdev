@@ -49,6 +49,5 @@ module.exports = {
       },
     },
   },
-  //   safelist: ['dark:!text-white'],
-  	plugins: [require('@tailwindcss/typography')],
+  plugins: [require('@tailwindcss/typography')],
 };

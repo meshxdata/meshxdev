@@ -1,0 +1,118 @@
+---
+import Footer from "../components/Footer.astro";
+import Navigation from "../components/Navigation.astro";
+import Layout from "../layouts/Content.astro";
+import Content from "../content/cookies-policy.md"
+import Prose from "../components/Prose.astro";
+---
+
+<style>
+  .container {
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.04);
+    display: flex;
+    font-weight: 400;
+    text-align: center;
+    padding: 80px 60px;
+  }
+
+  @media (max-width: 991px) {
+    .container {
+      padding: 0 20px;
+    }
+  }
+
+  .error-message {
+    display: flex;
+    margin-top: 33px;
+    width: 427px;
+    max-width: 100%;
+    flex-direction: column;
+  }
+
+  .error-text {
+    justify-content: center;
+    color: var(--body, rgba(255, 255, 255, 0.68));
+    letter-spacing: 0.28px;
+    font: 28px/133% 'Chivo Mono', sans-serif;
+  }
+
+  @media (max-width: 991px) {
+    .error-text {
+      max-width: 100%;
+    }
+  }
+
+  .navigation {
+    justify-content: center;
+    align-self: center;
+    display: flex;
+    margin-top: 16px;
+    gap: 10px;
+    font-size: 16px;
+    color: var(--complimentary, #7abeb6);
+    letter-spacing: 0.16px;
+    line-height: 160%;
+    padding: 8px 16px;
+  }
+
+  .nav-icon {
+ aspect-ratio: 1;
+    object-fit: auto;
+    object-position: center;
+    width: 16px;
+    margin: auto 0;
+  }
+
+  .main-page-link {
+    font-family: 'Inter', sans-serif;
+  }
+</style>
+
+
+<Layout title="meshX">
+  <Navigation />
+  <main class="font-montserrat relative">
+    <div
+      class="max-w-7xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4 p-4"
+    >
+      <div class="p-4 lg:col-span-6 md:col-span-6">
+        <div
+          class="grid grid-cols-6 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-8"
+        >
+          <div class="pt-4 lg:col-span-2 md:col-span-2 col-span-3">
+            <div class="flex justify-items justify-start md:justify-start">
+              <a href="/">
+              <img
+                src="/meshx_logo.svg"
+                alt="Logo"
+                class="w-48 h-8 md:w-40 md:h-7"
+              />
+              </a>
+            </div>
+          </div>
+          <div class="pt-4 lg:col-span-2 md:col-span-2 col-span-3">
+            <div class="flex justify-items justify-start md:justify-start ml-[115px] text-white/40 font-bold font-inter text-[25px]">
+              Cookies Policy
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 lg:col-span-2 md:col-span-2 ">
+
+      </div>
+      <div class="p-4 lg:col-span-4 md:col-span-4 text-white/40 font-inter leading-10">
+        <Prose>
+        <Content />
+        <Prose />
+       </div>
+      <div
+        class="col-span-1 sm:col-span-6 lg:col-span-6 md:col-span-6 lg:mt-20"
+      >
+      </div>
+    </div>
+
+  </main>
+  <Footer />
+</Layout>
