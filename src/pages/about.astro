@@ -1,0 +1,486 @@
+---
+import Footer from "../components/Footer.astro";
+import Navigation from "../components/Navigation.astro";
+import Layout from "../layouts/Content.astro";
+import Content from "../content/cookies-policy.md"
+import Prose from "../components/Prose.astro";
+import DataMeshWhatIs from "../components/DataMeshWhatIs.astro";
+---
+
+<style>
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto; /* Center the container horizontally */
+    padding-top: 28px;
+  }
+
+  .section-hero {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    min-height: 575px;
+    width: 100%;
+    max-width: 1455px;
+    align-items: center;
+    font-size: 20px;
+    color: var(--body, rgba(255, 255, 255, 0.68));
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 0.2px;
+    line-height: 32px;
+    justify-content: center;
+    padding: 80px 60px;
+  }
+
+  @media (max-width: 991px) {
+    .section-hero {
+      max-width: 100%;
+      padding: 0 20px;
+    }
+  }
+
+  .background-image {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .content-wrapper {
+    position: relative;
+    display: flex;
+    width: 697px;
+    max-width: 100%;
+    flex-direction: column;
+    margin: 69px 0 12px;
+  }
+
+  @media (max-width: 991px) {
+    .content-wrapper {
+      margin-top: 40px;
+    }
+  }
+
+  .logo-image {
+    aspect-ratio: 5.56;
+    object-fit: auto;
+    object-position: center;
+    width: 388px;
+    align-self: center;
+    max-width: 100%;
+  }
+
+  .description {
+    font-family: Inter, sans-serif;
+    margin-top: 93px;
+  }
+
+  @media (max-width: 991px) {
+    .description {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  }
+
+  .section-approach {
+    display: flex;
+    margin-top: 86px;
+    width: 100%;
+    max-width: 1195px;
+    flex-direction: column;
+    padding: 0 20px;
+  }
+
+  @media (max-width: 991px) {
+    .section-approach {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  }
+
+  .section-title {
+    color: var(--body, rgba(255, 255, 255, 0.68));
+    letter-spacing: 0.36px;
+    font: 400 36px/133% Montserrat, sans-serif;
+  }
+
+  @media (max-width: 991px) {
+    .section-title {
+      max-width: 100%;
+    }
+  }
+
+  .approach-content {
+    margin-top: 32px;
+  }
+
+  @media (max-width: 991px) {
+    .approach-content {
+      max-width: 100%;
+    }
+  }
+
+  .approach-columns {
+    gap: 20px;
+    display: flex;
+  }
+
+  @media (max-width: 991px) {
+    .approach-columns {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0px;
+    }
+  }
+
+  .approach-column {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 25%;
+    margin-left: 0px;
+  }
+
+  @media (max-width: 991px) {
+    .approach-column {
+      width: 100%;
+    }
+  }
+
+  .approach-column-content {
+    padding-right: 24px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+  }
+
+  @media (max-width: 991px) {
+    .approach-column-content {
+      margin-top: 16px;
+    }
+  }
+
+  .approach-title {
+    color: var(--orange, #ff6000);
+    letter-spacing: 0.2px;
+    font: 500 20px Montserrat, sans-serif;
+  }
+
+  .approach-description {
+    color: var(--body, rgba(255, 255, 255, 0.68));
+    letter-spacing: 0.16px;
+    margin-top: 16px;
+    font: 400 16px/26px Inter, sans-serif;
+  }
+
+  .section-data-mesh {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    overflow: hidden;
+    align-self: stretch;
+    position: relative;
+    min-height: 544px;
+    margin-top: 159px;
+    width: 100%;
+    padding: 70px 60px;
+  }
+
+  @media (max-width: 991px) {
+    .section-data-mesh {
+      max-width: 100%;
+      margin-top: 40px;
+      padding: 0 20px;
+    }
+  }
+
+  .data-mesh-content {
+    position: relative;
+    display: flex;
+    width: 713px;
+    max-width: 100%;
+    flex-direction: column;
+    margin: 58px 0 30px;
+  }
+
+  @media (max-width: 991px) {
+    .data-mesh-content {
+      margin-top: 40px;
+    }
+  }
+
+  .data-mesh-title {
+    color: var(--orange, #ff6000);
+    letter-spacing: 0.4px;
+    align-self: center;
+    font: 500 40px/133% Montserrat, sans-serif;
+  }
+
+  .data-mesh-description {
+    color: var(--body, rgba(255, 255, 255, 0.68));
+    text-align: center;
+    letter-spacing: 0.2px;
+    margin-top: 16px;
+    font: 400 20px/32px Inter, sans-serif;
+  }
+
+  @media (max-width: 991px) {
+    .data-mesh-description {
+      max-width: 100%;
+    }
+  }
+
+  .info-text {
+    color: var(--complimentary, #7abeb6);
+    letter-spacing: 0.16px;
+    margin-top: 132px;
+    width: 792px;
+    font: 400 16px/26px Inter, sans-serif;
+  }
+
+  @media (max-width: 991px) {
+    .info-text {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  }
+
+  .journey-text {
+    color: var(--orange, #ff6000);
+    text-align: center;
+    letter-spacing: 0.2px;
+    margin-top: 148px;
+    width: 792px;
+    font: 400 20px/32px Inter, sans-serif;
+  }
+
+  @media (max-width: 991px) {
+    .journey-text {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  }
+
+  .footer {
+    border-color: rgba(255, 255, 255, 0.16);
+    border-style: solid;
+    border-top-width: 1px;
+    margin-top: 228px;
+    width: 100%;
+    max-width: 1196px;
+    padding: 40px 20px 0;
+  }
+
+  @media (max-width: 991px) {
+    .footer {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  }
+
+  .footer-content {
+    gap: 20px;
+    display: flex;
+  }
+
+  @media (max-width: 991px) {
+    .footer-content {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0px;
+    }
+  }
+
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 33%;
+    margin-left: 0px;
+  }
+
+  @media (max-width: 991px) {
+    .footer-column {
+      width: 100%;
+    }
+  }
+
+  .footer-column-top {
+    align-self: stretch;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    font-size: 11px;
+    color: var(--body, rgba(255, 255, 255, 0.68));
+    font-weight: 400;
+    letter-spacing: 0.11px;
+    line-height: 24px;
+    padding: 10px 0 80px;
+  }
+
+  @media (max-width: 991px) {
+    .footer-column-top {
+      margin-top: 40px;
+    }
+  }
+
+  .logo-footer {
+    aspect-ratio: 5.88;
+    object-fit: auto;
+    object-position: center;
+    width: 95px;
+    fill: var(--orange, #ff6000);
+  }
+
+  .footer-text {
+    font-family: Inter, sans-serif;
+    margin-top: 16px;
+  }
+
+  .footer-column-middle {
+    align-items: start;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+    color: var(--orange, #ff6000);
+    font-weight: 400;
+    letter-spacing: 0.11px;
+    line-height: 24px;
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  @media (max-width: 991px) {
+    .footer-column-middle {
+      margin-top: 40px;
+    }
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .link {
+    font-family: Inter, sans-serif;
+    text-decoration-line: underline;
+  }
+</style>
+
+
+<Layout title="meshX">
+  <main class="font-montserrat relative">
+    <div
+      class="w-full justify-items-center"
+    >
+      <div class="">
+        <div class="container">
+          <section class="section-hero">
+            <img loading="lazy" src="/about-background.png" alt="" class="background-image" />
+            <div class="content-wrapper">
+              <img loading="lazy" src="/meshx_logo.svg" alt="MeshX logo" class="logo-image" />
+              <p class="description">
+                At MeshX, we are dedicated to revolutionizing the way organizations manage and utilize their data. 
+                By designing and developing cutting-edge software solutions based on data mesh principles, we empower 
+                businesses to transform their data infrastructure, enhancing scalability, flexibility, and data 
+                accessibility.
+              </p>
+            </div>
+          </section>
+        
+          <section class="section-approach">
+            <h2 class="section-title">Our Approach</h2>
+            <div class="approach-content">
+              <div class="approach-columns">
+                <article class="approach-column">
+                  <div class="approach-column-content">
+                    <h3 class="approach-title">Innovation</h3>
+                    <p class="approach-description">
+                      We are at the forefront of data technology, continually pushing the boundaries of what’s possible 
+                      with data mesh. Our team of experts is committed to developing innovative solutions that meet the 
+                      evolving needs of our clients.
+                    </p>
+                  </div>
+                </article>
+                <article class="approach-column">
+                  <div class="approach-column-content">
+                    <h3 class="approach-title">Collaboration</h3>
+                    <p class="approach-description">
+                      Collaboration is at the heart of what we do. We work closely with our clients to understand their 
+                      unique challenges and objectives, tailoring our solutions to deliver maximum impact.
+                    </p>
+                  </div>
+                </article>
+                <article class="approach-column">
+                  <div class="approach-column-content">
+                    <h3 class="approach-title">Excellence</h3>
+                    <p class="approach-description">
+                      We strive for excellence in every aspect of our work. From product development to customer support, 
+                      we are dedicated to providing the highest quality services and solutions.
+                    </p>
+                  </div>
+                </article>
+                <article class="approach-column">
+                  <div class="approach-column-content">
+                    <h3 class="approach-title">Integrity</h3>
+                    <p class="approach-description">
+                      Integrity and transparency are core values at MeshX. We build trust with our clients by being honest, 
+                      reliable, and delivering on our promises.
+                    </p>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+          <section class="section-data-mesh">
+            <img loading="lazy" src="/datameshimage.png" alt="" class="background-image" />
+            <div class="data-mesh-content">
+              <h2 class="data-mesh-title">What is Data Mesh?</h2>
+              <p class="data-mesh-description">
+                Data mesh is a paradigm shift in data architecture, moving away from monolithic data warehouses and lakes 
+                towards a decentralized, domain-oriented approach. It treats data as a product, managed by cross-functional 
+                teams who own their data pipelines end-to-end.<br />This model enhances scalability, accelerates innovation, 
+                and improves data quality and governance.
+              </p>
+            </div>
+          </section>
+        
+         <!-- <DataMeshWhatIs /> -->
+          <section class="info-text p-4">
+            <p>Our Team</p>
+            <p>
+              Our team is composed of industry experts, software engineers, and data scientists who are passionate about data and technology. 
+              We bring together a diverse range of skills and experiences to create innovative solutions that drive success for our clients.
+            </p>
+            <p>Join Us</p>
+            <p>
+              Are you passionate about data and technology? Do you want to be part of a team that is shaping the future of data architecture? 
+              Visit our <a href="/careers" class="link">Careers Page</a> to explore current opportunities and learn more about what it’s like to work at MeshX.
+            </p>
+            <p>Contact Us</p>
+            <p>
+              We’d love to hear from you! Whether you’re interested in our solutions, have questions, or just want to learn more about what we do, 
+              get in touch with us through our <a href="/contact" class="link">Contact Page</a>.
+            </p>
+          </section>
+        
+          <section class="journey-text">
+            At MeshX, we are passionate about transforming data architecture and empowering organizations to achieve 
+            their full potential with data mesh technology. Join us on this exciting journey!
+          </section>
+        </div>
+      </div>
+      </div>
+      <Footer />
+  </main>
+</Layout>
