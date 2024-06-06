@@ -1,0 +1,446 @@
+---
+import Footer from "../components/Footer.astro";
+import Navigation from "../components/Navigation.astro";
+import Layout from "../layouts/Content.astro";
+---
+
+<style>
+  .body {
+    background-color: var(--bg, #171819);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 16px 0;
+  }
+
+  .banner-image {
+    aspect-ratio: 25;
+    object-fit: auto;
+    object-position: center;
+    width: 1480px;
+    background-blend-mode: screen, normal;
+  }
+
+  @media (max-width: 991px) {
+    .banner-image {
+      max-width: 100%;
+    }
+  }
+
+  .logo-image {
+    aspect-ratio: 5.56;
+    object-fit: auto;
+    object-position: center;
+    width: 184px;
+    align-self: flex-start;
+    max-width: 100%;
+    margin: 153px 0 0 142px;
+  }
+
+  @media (max-width: 991px) {
+    .logo-image {
+      margin: 40px 0 0 10px;
+    }
+  }
+
+  .separator-line {
+    border: 1px solid rgba(255, 255, 255, 0.17);
+    background-color: rgba(255, 255, 255, 0.17);
+    margin-top: 58px;
+    width: 1196px;
+    max-width: 100%;
+    height: 1px;
+  }
+
+  @media (max-width: 991px) {
+    .separator-line {
+      margin-top: 40px;
+    }
+  }
+
+  .main-content {
+    display: flex;
+    margin-top: 99px;
+    width: 100%;
+    max-width: 1196px;
+    flex-direction: column;
+  }
+
+  @media (max-width: 991px) {
+    .main-content {
+      margin-top: 40px;
+    }
+  }
+
+  .header-title {
+    font: 400 36px/133% Montserrat, sans-serif;
+    letter-spacing: 0.36px;
+    color: var(--body, rgba(255, 255, 255, 0.68));
+  }
+
+  .description-text {
+    margin-top: 44px;
+    font: 300 20px/30px Inter, sans-serif;
+    letter-spacing: 0.2px;
+    color: var(--body, rgba(255, 255, 255, 0.68));
+  }
+
+  @media (max-width: 991px) {
+    .description-text {
+      margin-top: 40px;
+    }
+  }
+
+  .job-section {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (max-width: 991px) {
+    .job-section {
+      margin-top: 40px;
+    }
+  }
+
+  .job-list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 991px) {
+    .job-list {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  .job-card {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    color: var(--body, rgba(255, 255, 255, 0.68));
+  }
+
+  .job-title {
+    font: 500 24px Montserrat, sans-serif;
+    color: var(--orange, #ff6000);
+    letter-spacing: 0.24px;
+  }
+
+  .job-location,
+  .job-overview,
+  .job-responsibilities,
+  .job-qualifications {
+    margin-top: 20px;
+    font-family: Inter, sans-serif;
+    letter-spacing: 0.16px;
+    line-height: 160%;
+  }
+
+  .job-responsibilities ul,
+  .job-qualifications ul {
+    list-style-type: disc;
+    margin: 10px 0 0 20px;
+  }
+
+  .apply-button {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 133%;
+    color: #fff;
+    background-color: var(--orange, #ff6000);
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  @media (max-width: 991px) {
+    .apply-button {
+      padding: 9px 20px;
+    }
+  }
+
+  .apply-text {
+    margin: 0;
+  }
+
+  .apply-icon {
+    width: 24px;
+    aspect-ratio: 1;
+    object-fit: auto;
+    object-position: center;
+  }
+
+  .footer {
+    margin-top: 241px;
+    padding-top: 40px;
+    width: 100%;
+    max-width: 1196px;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  @media (max-width: 991px) {
+    .footer {
+      margin-top: 40px;
+    }
+  }
+
+  .footer-content {
+    display: flex;
+    gap: 20px;
+  }
+
+  @media (max-width: 991px) {
+    .footer-content {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    font-size: 11px;
+    color: var(--body, rgba(255, 255, 255, 0.68));
+    line-height: 24px;
+    padding: 10px 0;
+  }
+
+  .footer-logo {
+    width: 95px;
+    aspect-ratio: 5.88;
+    object-fit: auto;
+    object-position: center;
+    fill: var(--orange, #ff6000);
+  }
+
+  .footer-text {
+    margin-top: 16px;
+  }
+
+  .footer-link {
+    color: var(--orange, #ff6000);
+    text-decoration: underline;
+  }
+</style>
+
+<Layout title="meshX">
+  <Navigation />
+  <main class="font-montserrat relative">
+    <section class="body">
+      <div class="separator-line"></div>
+      <section class="main-content">
+        <header class="header-title">Careers at MeshX</header>
+        <p class="description-text">
+          Welcome to MeshX's Careers Page! Join us in revolutionizing the future
+          of data architecture. At MeshX, we are at the forefront of innovation,
+          harnessing the power of data mesh technology to transform how
+          organizations manage and utilize data. If you are passionate about
+          data and technology, and thrive in a collaborative, dynamic
+          environment, we'd love to hear from you.
+        </p>
+        <section class="job-section">
+          <div
+            class=""
+          >
+            <div class="max-w-7xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4 p-4">
+              <article class="job-card lg:col-span-3 md:col-span-3 col-span-1">
+                <h2 class="job-title">Data Architect</h2>
+                <p class="job-location"><strong>Location:</strong> Remote</p>
+                <p class="job-overview">
+                  <strong>Role Overview:</strong> As a Data Architect at MeshX, you
+                  will design, develop, and optimize data architecture and systems
+                  to support our data mesh solutions. You will be responsible for
+                  creating blueprints for data management, ensuring data integrity,
+                  and implementing best practices for data governance and security.
+                </p>
+                <div class="job-responsibilities">
+                  <strong>Key Responsibilities:</strong>
+                  <ul>
+                    <li>
+                      Design and implement effective database solutions and
+                      models to store and retrieve data efficiently
+                    </li>
+                    <li>
+                      Develop database solutions to support our data analysis
+                      and reporting needs
+                    </li>
+                    <li>
+                      Optimize database performance and ensure data security and
+                      privacy
+                    </li>
+                    <li>
+                      Collaborate with data engineers and scientists to
+                      integrate and manage data from various sources.
+                    </li>
+                  </ul>
+                </div>
+                <div class="job-qualifications">
+                  <strong>Qualifications:</strong>
+                  <ul>
+                    <li>
+                      Bachelor's or Master's degree in Computer Science,
+                      Information Systems, or related field
+                    </li>
+                    <li>
+                      Proven experience as a Data Architect or similar role
+                    </li>
+                    <li>
+                      Strong knowledge of database structure systems, AI and
+                      machine learning
+                    </li>
+                    <li>
+                      Familiarity with data visualization tools and techniques
+                    </li>
+                  </ul>
+                </div>
+                <a class="apply-button" href="mailto:careers@meshx.dev?subject=Data Architect">
+                  <span class="apply-text">Apply</span>
+                </a>
+              </article>
+              <article class="job-card lg:col-span-3 md:col-span-3 col-span-1">
+                <h2 class="job-title">Data Engineer</h2>
+                <p class="job-location"><strong>Location:</strong> Remote</p>
+                <p class="job-overview">
+                  <strong>Role Overview:</strong> As a Data Engineer, you will be instrumental in building and maintaining the infrastructure required for optimal extraction, transformation, and loading of data from a wide variety of data sources. Your work will ensure that our data mesh solutions have the highest quality data to inform decision-making.
+                </p>
+                <div class="job-responsibilities">
+                  <strong>Key Responsibilities:</strong>
+                  <ul>
+                    <li>
+                      Develop and maintain scalable data pipelines and ensure timely data delivery.
+                    </li>
+                    <li>
+                      Implement data integration solutions to support real-time data processing.
+                    </li>
+                    <li>
+                      Work closely with data architects and scientists to improve data reliability and quality.
+                    </li>
+                    <li>
+                      Optimize data systems and build automated processes for data management.
+                    </li>
+                  </ul>
+                </div>
+                <div class="job-qualifications pb-[25px]">
+                  <strong>Qualifications:</strong>
+                  <ul>
+                    <li>
+                      Bachelor's degree in Computer Science, Engineering, or a
+                      related field
+                    </li>
+                    <li>Experience in data engineering and ETL processes</li>
+                    <li>
+                      Proficiency in SQL and experience with big data tools
+                    </li>
+                    <li>
+                      Knowledge of cloud platforms and data pipeline tools
+                    </li>
+                  </ul>
+                </div>
+                <a class="apply-button" href="mailto:careers@meshx.dev?subject=Data Engineer">
+                  <span class="apply-text">Apply</span>
+                </a>
+              </article>
+              <article class="job-card lg:col-span-3 md:col-span-3 col-span-1">
+                <h2 class="job-title">DevOps Engineer</h2>
+                <p class="job-location"><strong>Location:</strong> Remote</p>
+                <p class="job-overview">
+                  <strong>Role Overview:</strong> As a DevOps Engineer, you will play a key role in streamlining our operations and processes for software development, testing, and deployment. You will collaborate with our development and IT teams to automate and improve our workflows, ensuring high-quality and timely delivery of software products.
+                </p>
+                <div class="job-responsibilities">
+                  <strong>Key Responsibilities:</strong>
+                  <ul>
+                    <li>
+                      Design, implement, and manage CI/CD pipelines.
+                    </li>
+                    <li>
+                      Automate testing and deployment processes to enhance reliability and performance.
+                    </li>
+                    <li>
+                      Monitor system performance and troubleshoot issues to ensure system stability.
+                    </li>
+                    <li>
+                      Collaborate with developers to optimize software performance and scalability.
+                    </li>
+                  </ul>
+                </div>
+                <div class="job-qualifications">
+                  <strong>Qualifications:</strong>
+                  <ul>
+                    <li>
+                      Bachelor's degree in Computer Science, Engineering, or a
+                      related field
+                    </li>
+                    <li>Experience with DevOps tools and practices.</li>
+                    <li>
+                      Proficiency in scripting languages and automation tools.
+                    </li>
+                    <li>
+                      Strong understanding of cloud infrastructure and containerization.
+                    </li>
+                  </ul>
+                </div>
+                <a class="apply-button" href="mailto:careers@meshx.dev?subject=Devops Engineer">
+                  <span class="apply-text">Apply</span>
+                </button>
+              </article>
+              <article class="job-card lg:col-span-3 md:col-span-3 col-span-1 h-[1000px]">
+                <h2 class="job-title">Frontend Developer</h2>
+                <p class="job-location"><strong>Location:</strong> Remote</p>
+                <p class="job-overview">
+                  <strong>Role Overview:</strong> As a Frontend Developer at MeshX, you will be responsible for creating intuitive and visually appealing user interfaces for our applications. Your work will ensure that our users have a seamless and engaging experience when interacting with our tools and data.
+
+                </p>
+                <div class="job-responsibilities">
+                  <strong>Key Responsibilities:</strong>
+                  <ul>
+                    <li>
+                      Develop responsive and user-friendly web applications.
+                    </li>
+                    <li>
+                      Collaborate with designers and backend developers to implement new features.
+                    </li>
+                    <li>
+                      Optimize applications for maximum speed and scalability.
+                    </li>
+                    <li>
+                      Ensure the technical feasibility of UI/UX designs.
+                    </li>
+                  </ul>
+                </div>
+                <div class="job-qualifications pb-[52px]">
+                  <strong>Qualifications:</strong>
+                  <ul>
+                    <li>
+                      Bachelor's degree in Computer Science, Engineering, or related field.
+                    </li>
+                    <li>Proficiency in HTML, CSS, JavaScript, and modern frontend frameworks (e.g., React, Angular, Vue).</li>
+                    <li>
+                      Experience with responsive and adaptive design principles.
+                    </li>
+                    <li>
+                      Strong problem-solving skills and attention to detail.
+                    </li>
+                  </ul>
+                </div>
+                <a class="apply-button" href="mailto:careers@meshx.dev?subject=Frontend Engineer">
+                  <span class="apply-text">Apply</span>
+                </a>
+              </article>
+            </div>
+          </div>
+        </section>
+      </section>
+    </section>
+  </main>
+  <Footer />
+</Layout>
