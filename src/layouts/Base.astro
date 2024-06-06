@@ -1,8 +1,7 @@
 ---
 import Navigation from "../components/Navigation.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../site_config";
-import { ViewTransitions } from 'astro:transitions';
-
+import { ViewTransitions } from "astro:transitions";
 
 export interface Props {
   /** Title of the page */
@@ -47,53 +46,167 @@ const {
 
 <!-- Particle System Script -->
 <script type="module">
+  // const gridSize = 16;
+  // const spacing = 64;
+  // let particles = [];
+  // let angle = 0;
 
-  const gridSize = 16;
-  const spacing = 64;
+  // function setup() {
+  //   let canvas = createCanvas(windowWidth, windowHeight, WEBGL);
+  //   canvas.parent('particleCanvas');  // Attach the canvas to the particleCanvas div
+  //   background('#1B1C1D');
+
+  //   for (let x = 0; x < gridSize; x++) {
+  //     particles[x] = [];
+  //     for (let y = 0; y < gridSize; y++) {
+  //       particles[x][y] = [];
+  //       for (let z = 0; z < gridSize; z++) {
+  //         particles[x][y][z] = createVector(
+  //           (x - gridSize / 2) * spacing,
+  //           (y - gridSize / 2) * spacing,
+  //           (z - gridSize / 2) * spacing
+  //         );
+  //       }
+  //     }
+  //   }
+  // }
+
+  // function draw() {
+  //   background('#1B1C1D');
+  //   lights();
+  //   translate(0, 0, -200);
+  //   rotateY(angle);
+  //   rotateX(-0.5);
+  //   angle += 0.0005;
+
+  //   noStroke();
+  //   fill(255);
+
+  //   for (let x = 0; x < gridSize; x++) {
+  //     for (let y = 0; y < gridSize; y++) {
+  //       for (let z = 0; z < gridSize; z++) {
+  //         let p = particles[x][y][z];
+  //         push();
+  //         translate(p.x, p.y, p.z);
+  //         box(0.5);
+  //         pop();
+  //       }
+  //     }
+  //   }
+  // }
+
+  // function windowResized() {
+  //   resizeCanvas(windowWidth, windowHeight);
+  // }
+
+  // window.setup = setup;
+  // window.draw = draw;
+  // window.windowResized = windowResized;
+  let numParticles = 400; // Number of particles
   let particles = [];
-  let angle = 0;
+  let lines = [];
+  let maxLines = 5; // Maximum number of lines to appear simultaneously
 
   function setup() {
-    let canvas = createCanvas(windowWidth, windowHeight, WEBGL);
-    canvas.parent('particleCanvas');  // Attach the canvas to the particleCanvas div
-    background('#1B1C1D');
+    let canvas = createCanvas(windowWidth, windowHeight);
+    canvas.parent("particleCanvas"); // Attach the canvas to the particleCanvas div
+    for (let i = 0; i < numParticles; i++) {
+      particles.push(new Particle());
+    }
+  }
 
-    for (let x = 0; x < gridSize; x++) {
-      particles[x] = [];
-      for (let y = 0; y < gridSize; y++) {
-        particles[x][y] = [];
-        for (let z = 0; z < gridSize; z++) {
-          particles[x][y][z] = createVector(
-            (x - gridSize / 2) * spacing,
-            (y - gridSize / 2) * spacing,
-            (z - gridSize / 2) * spacing
-          );
+  function draw() {
+    background("#171819");
+
+    // Move and display particles
+    for (let i = 0; i < numParticles; i++) {
+      particles[i].move();
+      particles[i].display();
+    }
+
+    // Draw connecting lines
+    for (let i = lines.length - 1; i >= 0; i--) {
+      let l = lines[i];
+      l.update();
+      if (l.isDead()) {
+        lines.splice(i, 1);
+      } else {
+        l.display();
+      }
+    }
+
+    // Add new lines randomly
+    if (lines.length < maxLines) {
+      for (let i = 0; i < numParticles; i++) {
+        for (let j = i + 1; j < numParticles; j++) {
+          if (
+            dist(
+              particles[i].x,
+              particles[i].y,
+              particles[j].x,
+              particles[j].y
+            ) < 100 &&
+            random(1) < 0.001
+          ) {
+            lines.push(new Line(particles[i], particles[j]));
+          }
         }
       }
     }
   }
 
-  function draw() {
-    background('#1B1C1D');
-    lights();
-    translate(0, 0, -200);
-    rotateY(angle);
-    rotateX(-0.5);
-    angle += 0.0005;
+  class Particle {
+    constructor() {
+      this.x = random(width);
+      this.y = random(height);
+      this.speedX = 0;
+      this.speedY = 0;
+      this.diameter = random(1, 2);
+      this.noiseOffsetX = random(1000);
+      this.noiseOffsetY = random(1000);
+    }
 
-    noStroke();
-    fill(255);
+    move() {
+      this.speedX = map(noise(this.noiseOffsetX), 0, 1, -1, 1);
+      this.speedY = map(noise(this.noiseOffsetY), 0, 1, -1, 1);
+      this.noiseOffsetX += 0.01;
+      this.noiseOffsetY += 0.01;
 
-    for (let x = 0; x < gridSize; x++) {
-      for (let y = 0; y < gridSize; y++) {
-        for (let z = 0; z < gridSize; z++) {
-          let p = particles[x][y][z];
-          push();
-          translate(p.x, p.y, p.z);
-          box(0.5);
-          pop();
-        }
-      }
+      this.x += this.speedX * 0.5;
+      this.y += this.speedY * 0.5;
+
+      // Wrap around the screen
+      if (this.x < 0) this.x = width;
+      if (this.x > width) this.x = 0;
+      if (this.y < 0) this.y = height;
+      if (this.y > height) this.y = 0;
+    }
+
+    display() {
+      noStroke();
+      fill(150);
+      ellipse(this.x, this.y, this.diameter, this.diameter);
+    }
+  }
+
+  class Line {
+    constructor(p1, p2) {
+      this.p1 = p1;
+      this.p2 = p2;
+      this.lifespan = 80; // lasts for about a second at 60 FPS
+    }
+
+    update() {
+      this.lifespan--;
+    }
+
+    isDead() {
+      return this.lifespan <= 0;
+    }
+
+    display() {
+      stroke(255, map(this.lifespan, 0, 60, 0, 255));
+      line(this.p1.x, this.p1.y, this.p2.x, this.p2.y);
     }
   }
 
@@ -106,7 +219,6 @@ const {
   window.windowResized = windowResized;
 </script>
 
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -145,7 +257,7 @@ const {
     </script>
   </head>
 
-  <body class="bg-[#1B1C1D] scroll-smooth">
+  <body class="bg-[#171819] scroll-smooth">
     <div id="particleCanvas"></div>
     <slot />
   </body>
