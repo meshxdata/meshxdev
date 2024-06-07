@@ -122,4 +122,4 @@ Contact Information
 
 Address: 160 Robinson Road, #14-04 Singapore 068914
 
-Email: owain@surfncode.io
+Email: contact@meshx.dev
