@@ -1,0 +1,83 @@
+---
+import Navigation from "../components/Navigation.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../site_config";
+import { ViewTransitions } from 'astro:transitions';
+
+
+export interface Props {
+  /** Title of the page */
+  title?: string;
+  /** Description of the page */
+  description?: string;
+  /** OpenGraph thumbnail of the page */
+  thumbnail?: {
+    /** URL of the thumbnail */
+    src: string;
+    /** Alt text of the thumbnail */
+    alt: string;
+  };
+  /** Canonical URL of the page */
+  canonical?: string;
+}
+
+const {
+  title = SITE_TITLE,
+  description = SITE_DESCRIPTION,
+  canonical,
+} = Astro.props;
+---
+
+<style>
+  .getstarted-rectangle {
+    background: url("/public/getstarted.svg");
+    background-blend-mode: screen, normal;
+    background-size: cover;
+    background-position: center;
+  }
+</style>
+<!-- Include p5.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+    <!-- <ViewTransitions /> -->
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    {canonical && <link rel="canonical" href={canonical} />}
+
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={Astro.request.url} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-93RHYT4C93"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-93RHYT4C93");
+    </script>
+  </head>
+  <body class="bg-[#FFFFFF] scroll-smooth">
+    <slot />
+  </body>
+</html>

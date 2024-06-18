@@ -1,5 +1,6 @@
 import Airtable from "airtable";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
+import axios from "axios";
 
 
 export default function GetStartedForm() {
@@ -8,7 +9,8 @@ export default function GetStartedForm() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  async function submit(e: FormEvent<HTMLFormElement>) {
+
+  async function submit(e: any) {
     e.preventDefault();
     setShowResponse(true)
     const formData = new FormData(e.target as HTMLFormElement);
@@ -26,13 +28,32 @@ export default function GetStartedForm() {
               sentDate: new Date().toISOString(),
         });
     }
+
+    // Email details
+    const message = {
+      to: email, // Set the recipient's email address
+      from: 'chathuranga@surfncode.io', // Set your verified sender email address
+      templateId: 'd-4397fcb91c1f475987dd1847438db296', // Set the template ID you created in SendGrid
+      dynamicTemplateData: {
+      },
+    };
+
+    const res = await axios({
+      method: "post",
+      url: "/api/email",
+      data: {
+        message
+      }
+    })
+
+    console.log(res)
     setEmail("");
     setIsLoading(false)
   }  
   
   return (
-    <form onSubmit={submit} className="bg-opacity-90 p-6 rounded-md max-w-2xl w-full mx-4 text-center mt-36">
-      <h2 className="text-white/70 text-2xl font-normal font-montserrat mb-4">
+    <form onSubmit={submit} className="bg-opacity-90 p-6 rounded-md max-w-2xl w-full mx-4 text-center mt-32">
+      <h2 className="text-white/70 text-[24px] font-normal font-montserrat mb-4">
         Request early access
       </h2>
       <div>
@@ -55,8 +76,8 @@ export default function GetStartedForm() {
     <svg className="mt-5 md:mr-2 md:ml-12 ml-6" width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M18.5 0H2.5C1.4 0 0.51 0.9 0.51 2L0.5 14C0.5 15.1 1.4 16 2.5 16H10.5V14H2.5V4L10.5 9L18.5 4V9H20.5V2C20.5 0.9 19.6 0 18.5 0ZM10.5 7L2.5 2H18.5L10.5 7ZM15.84 18L12.3 14.46L13.71 13.05L15.83 15.17L20.07 10.93L21.5 12.34L15.84 18Z" fill="#FF6000"/>
     </svg>
-    <h2  className="text-white/40 text-lg font-light font-inter mb-4 mt-3.5">
-    Thank you! Your email has been saved in our database.
+    <h2  className="text-white/40 text-md font-light font-inter mb-4 mt-3.5">
+    Thank you! Your interest is registered. We will reach out to you soon.
     </h2>
     </div>)}
     
