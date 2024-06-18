@@ -17,8 +17,7 @@ export const POST: APIRoute = async ({ request }) => {
 
 async function sendEmail(message: any) {
 
-    const apiKey = import.meta.env.ASTRO_SENDGRID_API_KEY;
-    sgMail.setApiKey(apiKey);
+    sgMail.setApiKey(import.meta.env.ASTRO_SENDGRID_API_KEY);
 
     try {
       const response = await sgMail.send(message);
