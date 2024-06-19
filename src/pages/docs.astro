@@ -1,6 +1,8 @@
 ---
 import Footer from "../components/DocsFooter.astro";
 import Layout from "../layouts/Docs.astro";
+import { SignedIn, SignedOut } from "astro-clerk-auth/components/control";
+import { UserButton, SignIn } from "astro-clerk-auth/components/interactive";
 ---
 <style>
     .container {
@@ -449,7 +451,10 @@ import Layout from "../layouts/Docs.astro";
             <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/39b600c0455658c2f96bf2ce3f806b78defc2268ae1dab94c1e3dfac9321aca5?apiKey=ccbd9f716d3746849ccb6bd0200e2166&" alt="Encyclopedia Logo" class="logo" />
             <h1 class="title">Encyclopedia</h1>
           </div>
-          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/814b34bbf531296cd2a43e817cf7d57dce6a5e3a86667cc5c05fe5f3cae7d874?apiKey=ccbd9f716d3746849ccb6bd0200e2166&" alt="Search Icon" class="icon" />
+          <SignedIn>
+          <UserButton />
+        </SignedIn>
+      
         </header>
         <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/f0ce7d17096abc9afa41fd5ec095899e759d80397ae814644b518ca02c4dd5ed?apiKey=ccbd9f716d3746849ccb6bd0200e2166&" alt="Main Banner Image" class="main-image" />
         <section class="content">
