@@ -6,6 +6,7 @@ name: docker build
 trigger:
   branch:
   - main
+  - auth-email-ui-fixes
 
 services:
 - name: docker
