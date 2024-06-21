@@ -125,7 +125,23 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		
+		"docs": {
+"getting-started.md": {
+	id: "getting-started.md";
+  slug: "getting-started";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+"plan-your-data-landscape/index.md": {
+	id: "plan-your-data-landscape/index.md";
+  slug: "plan-your-data-landscape";
+  body: string;
+  collection: "docs";
+  data: any
+} & { render(): Render[".md"] };
+};
+
 	};
 
 	type DataEntryMap = {

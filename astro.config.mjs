@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, sharpImageService } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import react from '@astrojs/react';
@@ -6,9 +6,10 @@ import { SITE_URL } from './src/site_config';
 import clerk from "astro-clerk-auth";
 import node from "@astrojs/node";
 
-
-// https://astro.build/config
 export default defineConfig({
+  image: {
+    service: sharpImageService(),
+  },
   site: SITE_URL,
   output: "server",
   integrations: [ clerk(), tailwind(), sitemap(), react({
