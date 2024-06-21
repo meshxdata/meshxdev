@@ -1,0 +1,75 @@
+---
+
+kind: pipeline
+name: docker build
+
+trigger:
+  branch:
+    - auth-email-ui-fixes
+
+services:
+- name: docker
+  image: docker:dind
+  pull: if-not-exists
+  privileged: true
+  volumes:
+  - name: dockersock
+    path: /var/run
+
+steps:
+- name: publish
+  image: plugins/gcr:20.17.4
+  pull: if-not-exists
+  environment:
+    SSH:
+      from_secret: private_key
+    GCR:
+      from_secret: google_credentials
+  volumes:
+  - name: dockersock
+    path: /var/run
+  settings:
+    repo: nexus/processor
+    tags: latest
+    json_key:
+      from_secret: google_credentials
+    ssh-agent-key:
+      from_secret: private_key
+  commands:
+    - sleep 5; echo "$GCR" | docker login -u _json_key --password-stdin https://europe-west1-docker.pkg.dev
+    - docker build -t europe-west1-docker.pkg.dev/meshx-411315/meshx/website:latest --build-arg SSH="$SSH" .
+    - docker push europe-west1-docker.pkg.dev/meshx-411315/meshx/website:latest
+
+- name: slack notification
+  image: plugins/slack
+  pull: if-not-exists
+  settings:
+    channel: drone
+    webhook:
+      from_secret: slack_webhook
+    link_names: true
+    username: Drone
+    template: |
+      {{#success build.status}}
+        build {{build.number}} succeeded. 👌
+      {{else}}
+        build {{build.number}} failed. 🧑‍🔧
+      {{/success}}
+      repo: {{repo.name}} - {{build.branch}}
+      job url: {{build.link}}
+      commit: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}|{{ truncate build.commit 8 }}>
+      branch: <https://github.com/{{ repo.owner }}/{{ repo.name }}/commits/{{ build.branch }}|{{ build.branch }}>
+      version: {{ build.number }}
+      author: {{ build.author }}
+  when:
+    status:
+      - failure
+      - success
+      - changed
+    event:
+      - push
+      - pull_request
+
+volumes:
+- name: dockersock
+  temp: {}
