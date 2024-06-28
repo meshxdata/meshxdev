@@ -25,4 +25,4 @@ async function sendEmail(message: any) {
     } catch (Error)  {
       console.error('Error sending email', Error);
     }
-  }
+}
