@@ -10,7 +10,7 @@ export default defineConfig({
   image: {
     service: sharpImageService(),
   },
-  site: SITE_URL,
+  site: "www2.meshx.dev",
   output: "server",
   integrations: [ clerk(), tailwind(), sitemap(), react({
     include: ['**/react/*'],
