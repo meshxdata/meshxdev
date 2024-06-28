@@ -6,23 +6,24 @@ image:
   pullPolicy: Always
   tag: "latest"
 
-
+imagePullSecrets:
+  - name: docker-registry
 
 serviceAccount:
   create: true
  
 podAnnotations: {}
 
-podSecurityContext: {}
+podSecurityContext:
   fsGroup: 2000
 
 securityContext:
   capabilities:
-   drop:
-   - ALL
- readOnlyRootFilesystem: true
- runAsNonRoot: true
- runAsUser: 1000
+    drop:
+      - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
 
 service:
   type: ClusterIP
@@ -30,10 +31,11 @@ service:
 
 ingress:
   enabled: true
-  className: ""
+  className: "nginx"
   annotations:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
+    cert-manager.io/issuer: letsencrypt-prod
   hosts:
     - host: meshx.dev
       paths:
@@ -41,8 +43,8 @@ ingress:
           pathType: ImplementationSpecific
   tls:
     - secretName: website
-       hosts:
-         - meshx.dev
+      hosts:
+        - meshx.dev
 
 resources:
   cpu: 100m

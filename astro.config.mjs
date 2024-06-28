@@ -1,16 +1,18 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, sharpImageService } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import react from '@astrojs/react';
 import { SITE_URL } from './src/site_config';
+import clerk from "astro-clerk-auth";
+import node from "@astrojs/node";
 
-// https://astro.build/config
 export default defineConfig({
-  site: SITE_URL,
-  experimental: {
-    viewTransitions: true
+  image: {
+    service: sharpImageService(),
   },
-  integrations: [tailwind(), sitemap(), react({
+  site: "www2.meshx.dev",
+  output: "server",
+  integrations: [ clerk(), tailwind(), sitemap(), react({
     include: ['**/react/*'],
   })],
   vite: {
@@ -18,7 +20,10 @@ export default defineConfig({
     optimizeDeps: {
       exclude: ['@resvg/resvg-js']
     }
-  }
+  },
+  adapter: node({
+    mode: "standalone",
+  }),
 });
 function rawFonts(ext) {
   return {
